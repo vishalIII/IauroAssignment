@@ -11,7 +11,7 @@ const port = process.env.PORT || 3000;
 connectToMongo();
 
 const corsOptions = {
-  origin: 'https://66b5d03537ff3cd3d050a967--sparkling-arithmetic-82670a.netlify.app', // Deployment = Replace with frontend URL ---------------------------
+  origin: 'https://66b5d3ed4d3694239745c2dd--sparkling-arithmetic-82670a.netlify.app', // Deployment = Replace with frontend URL ---------------------------
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   allowedHeaders: ['Authorization', 'Content-Type'],
   credentials: true,
