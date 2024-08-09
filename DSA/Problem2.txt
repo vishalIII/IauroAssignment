@@ -1,0 +1,20 @@
+//Time Complexity = O(N)  , Space Complexity = O(1)
+bool hasCycle(ListNode *head) {
+    if (head == nullptr || head->next == nullptr) {
+        return false;
+    }
+
+    ListNode *slow = head;
+    ListNode *fast = head;
+
+    while (fast != nullptr && fast->next != nullptr) {
+        slow = slow->next;           // Moving slow pointer one step
+        fast = fast->next->next;     // Moving fast pointer two steps
+
+        if (slow == fast) {          // If they meet,it means there is a cycle
+            return true;
+        }
+    }
+
+    return false; // No cycle found
+}

@@ -1,0 +1,31 @@
+//Time Complexity = O(NlogN) , Space Complexity = O(1)
+int minContainersRequired(std::vector<int> shipments, std::vector<int> container_limits) {
+    // Sorting both the shipments and container_limits in descending order
+    sort(shipments.rbegin(),shipments.rend());
+    sort(shipments.rbegin(),shipments.rend());
+
+    int containerCount = 0;
+    int shipmentIndex = 0;
+    int containerIndex = 0;
+
+    while (shipmentIndex < shipments.size() && containerIndex < container_limits.size()) {
+        // Trying to fit as much as possible from the current shipment into the current container
+        if (shipments[shipmentIndex] <= container_limits[containerIndex]) {
+            container_limits[containerIndex] -= shipments[shipmentIndex];
+            shipmentIndex++;
+        } else {
+            // If the current shipment can't fit entirely, partially fit it and using the next container
+            shipments[shipmentIndex] -= container_limits[containerIndex];
+            containerIndex++;
+            containerCount++;
+        }
+    }
+
+    // If we run out of containers and still have shipments left, return -1
+    if (shipmentIndex < shipments.size()) {
+        return -1;
+    }
+
+    // Returning the minimum number of containers used
+    return containerIndex + 1;
+}
